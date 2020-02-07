@@ -20,7 +20,7 @@
 
 ### Exercice 1. Variables d'environnement
 
-**1. Dans quels dossiers bash trouve-t-il les commandes tapées par l’utilisateur ?**
+**1. Dans quels dossiers bash trouve-t-on les commandes tapées par l’utilisateur ?**
 
 *Les commandes tapées par l'utilisateur se trouvent dans les fichiers spécifiés par la variable d'environnement ``PATH``. On peut les afficher avec la commande suivante :*
 
@@ -37,14 +37,14 @@
 **2. Quelle variable d’environnement permet à la commande cd tapée sans argument de vous ramener dans
 votre répertoire personnel ?**
 
-*la variable d'environnement ``$HOME`` (équivalent ``cd $HOME``).*
+*La variable d'environnement ``$HOME`` (faire ``cd`` revient à faire ``cd $HOME``).*
 
 &nbsp;
 
 **3. Explicitez le rôle des variables LANG, PWD, OLDPWD, SHELL et _.**
 
 - *``LANG``: spécifie la langue et l'encoding utilisés par le système.*
- * ``printenv LANG`` donne ``fr_FR.UTF-8``
+``printenv LANG`` donne ``fr_FR.UTF-8``
 - *``PWD``: contient le chemin courant.*
 
 - *``OLWPWD``: contient le dernier chemin courant (utilisé par exemple par cd -).*
