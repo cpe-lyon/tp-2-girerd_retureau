@@ -330,7 +330,7 @@ fi
 
 **Écrivez un script qui aﬀiche les combinaisons possibles de couleurs (cf. TP 1) :**
 
-![colored Bash syntax](https://github.com/cpe-lyon/tp-1-girerd_retureau/blob/master/couleurBashExemple.png)
+![colored Bash syntax](https://github.com/cpe-lyon/tp-2-girerd_retureau/blob/master/couleurBashExemple.png)
 
 ```bash
 userCheck.sh:
@@ -354,4 +354,4 @@ fi
 *Résultat :*
 
 
-![colored Bash syntax](https://github.com/cpe-lyon/tp-1-girerd_retureau/blob/master/couleurBashResultat.png)
+![colored Bash syntax](https://github.com/cpe-lyon/tp-2-girerd_retureau/blob/master/couleurBashResultat.png)
