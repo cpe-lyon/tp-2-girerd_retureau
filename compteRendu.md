@@ -57,7 +57,7 @@ votre répertoire personnel ?**
 
 **4. Créez une variable locale MY_VAR (le contenu n’a pas d’importance). Vérifiez que la variable existe.**
 
-```
+```bash
 MY_VAR="testvar"; echo $MY_VAR
 testvar
 ```
@@ -69,7 +69,7 @@ de cette question, tapez la commande exit pour revenir dans votre session initia
 
 *La commande bash ouvre une nouvelle session shell, ce qui réinitialise les variables d'environnement.*
 
-```
+```bash
 bash
 echo $MY_VAR
 ---------- vide
@@ -82,7 +82,7 @@ testvar
 
 **6. Transformez MY_VAR en une variable d’environnement et recommencez la question précédente. Expliquez.**
 
-```
+```bash
 export MY_VAR='testvar' && printenv MY_VAR
 testvar
 ```
@@ -92,7 +92,7 @@ testvar
 **7. Créer la variable d’environnement NOMS ayant pour contenu vos noms de binômes séparés par un espace.
 Afficher la valeur de NOMS pour vérifier que l’affectation est correcte.**
 
-```
+```bash
 export NOMS='GIRERD RETUREAU' && printenv NOMS
 GIRERD RETUREAU
 ```
@@ -122,7 +122,7 @@ unset ?**
 **10. Utilisez la commande echo pour écrire exactement la phrase : $HOME = chemin (où chemin est votre
 dossier personnel d’après bash)**
 
-```
+```bash
 echo "\$HOME = $HOME (où chemin est votre
 dossier personnel d’après bash)"
 $HOME = /home/herysia (où chemin est votre
@@ -141,7 +141,7 @@ dossier personnel d’après bash)
 
 **Écrivez un script testpwd.sh qui demande de saisir un mot de passe et vérifie s’il correspond ou non au contenu d’une variable PASSWORD dont le contenu est codé en dur dans le script. Le mot de passe saisi par l’utilisateur ne doit pas s’aﬀicher.**
 
-```
+```bash
 testpwd.sh:
 
 #!/bin/bash
@@ -181,7 +181,7 @@ else
 fi
 }**
 
-```
+```bash
 testpwd.sh:
 
 #!/bin/bash
@@ -210,7 +210,7 @@ fi
 
 **Écrivez un script qui vérifie l’existence d’un utilisateur dont le nom est donné en paramètre du script. Si le script est appelé sans nom d’utilisateur, il aﬀiche le message : ”Utilisation : *nom_du_script* nom_utilisateur”,où nom_du_script est le nom de votre script récupéré automatiquement (si vous changez le nom de votre script, le message doit changer automatiquement).**
 
-```
+```bash
 userCheck.sh:
 
 #!/bin/bash
@@ -239,7 +239,7 @@ fi
 
 **Écrivez un programme qui calcule la factorielle d’un entier naturel passé en paramètre (on supposera que l’utilisateur saisit toujours un entier naturel).**
 
-```
+```bash
 userCheck.sh:
 
 #!/bin/bash
@@ -268,7 +268,7 @@ fi
 
 **Écrivez un script qui génère un nombre aléatoire entre 1 et 1000 et demande à l’utilisateur de le deviner.Le programme écrira ”C’est plus!”, ”C’est moins!” ou ”Gagné!” selon les cas (vous utiliserez $RANDOM).**
 
-```
+```bash
 userCheck.sh:
 
 #!/bin/bash
@@ -301,7 +301,7 @@ fi
 
 **3. Modifiez votre programme pour que les notes ne soient plus données en paramètres, mais saisies et stockées au fur et à mesure dans un tableau.**
 
-```
+```bash
 userCheck.sh:
 
 #!/bin/bash
@@ -332,7 +332,7 @@ fi
 
 ![colored Bash syntax](https://github.com/cpe-lyon/tp-1-girerd_retureau/blob/master/couleurBashExemple.png)
 
-```
+```bash
 userCheck.sh:
 
 #!/bin/bash
