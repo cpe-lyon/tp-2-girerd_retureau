@@ -86,6 +86,7 @@ testvar
 export MY_VAR='testvar' && printenv MY_VAR
 testvar
 ```
+*La variable MY_VAR est toujours disponible après avoir exécuté ``bash`` car c'est une variable d'environnement (globale), et non une variable locale.*
 
 &nbsp;
 
