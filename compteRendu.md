@@ -59,6 +59,11 @@ votre répertoire personnel ?**
 
 ```bash
 MY_VAR="testvar"; echo $MY_VAR
+```
+
+*Résultat :*
+
+```bash
 testvar
 ```
 
@@ -72,9 +77,22 @@ de cette question, tapez la commande exit pour revenir dans votre session initia
 ```bash
 bash
 echo $MY_VAR
----------- vide
+```
+
+*Résultat (ligne vide) :*
+
+```bash
+
+```
+
+```bash
 exit
 echo $MY_VAR
+```
+
+*Résultat  :*
+
+```bash
 testvar
 ```
 
@@ -84,8 +102,14 @@ testvar
 
 ```bash
 export MY_VAR='testvar' && printenv MY_VAR
+```
+
+*Résultat  :*
+
+```bash
 testvar
 ```
+
 *La variable MY_VAR est toujours disponible après avoir exécuté ``bash`` car c'est une variable d'environnement (globale), et non une variable locale.*
 
 &nbsp;
@@ -95,6 +119,11 @@ Afficher la valeur de NOMS pour vérifier que l’affectation est correcte.**
 
 ```bash
 export NOMS='GIRERD RETUREAU' && printenv NOMS
+```
+
+*Résultat  :*
+
+```bash
 GIRERD RETUREAU
 ```
 
@@ -124,10 +153,13 @@ unset ?**
 dossier personnel d’après bash)**
 
 ```bash
-echo "\$HOME = $HOME (où chemin est votre
-dossier personnel d’après bash)"
-$HOME = /home/herysia (où chemin est votre
-dossier personnel d’après bash)
+echo "\$HOME = $HOME"
+```
+
+*Résultat :*
+
+```bash
+$HOME = /home/herysia
 ```
 
 &nbsp;
@@ -171,33 +203,32 @@ fi
 
 **Ecrivez un script qui prend un paramètre et utilise la fonction suivante pour vérifier que ce paramètre est un nombre réel :**
 
-**function is_number()
-{
-re='^[+-]?[0-9]+([.][0-9]+)?$'
-
-if ! [[ $1 =~ $re ]] ; then
-	return 1
-else
-	return 0
-fi
-}**
-
 ```bash
-testpwd.sh:
+rationnelles.sh:
 
 #!/bin/bash
 
-PASSWORD="azerty"
+function is_number
+{
+	re='^[+-]?[0-9]+([.][0-9]+)?$'
+	if ! [[ $1 =~ $re ]]
+	then
+		return 1
+	else
+		return 0
+	fi
+}
 
-read -s -p "Tapez votre mot de passe (il ne sera pas affiché à l'écran) : " userPassword
-
-echo -e '\n'
-
-if echo $userPassword | grep -q $PASSWORD 2>/dev/null
-then 
-        echo "Votre mot de passe est trop faible, il contient des termes interdits."
+if [ $# -ne 1 ]
+then
+	echo "Merci d'utiliser un unique paramètre"
 else
-        echo "Mot de passe correct, il ne contient pas de terme interdit."
+	if is_number  "$1" != 1
+	then
+		echo "$1 est un nombre"
+	else
+		echo "$1 n'est pas un nombre"
+	fi
 fi
 ```
 
