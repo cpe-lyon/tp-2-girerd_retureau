@@ -177,7 +177,7 @@ $HOME = /home/herysia
 **Écrivez un script testpwd.sh qui demande de saisir un mot de passe et vérifie s’il correspond ou non au contenu d’une variable PASSWORD dont le contenu est codé en dur dans le script. Le mot de passe saisi par l’utilisateur ne doit pas s’aﬀicher.**
 
 ```bash
-**testpwd.sh:**
+testpwd.sh:
 
 #!/bin/bash
 
@@ -206,7 +206,7 @@ fi
 **Ecrivez un script qui prend un paramètre et utilise la fonction suivante pour vérifier que ce paramètre est un nombre réel :**
 
 ```bash
-**rationnelles.sh:**
+rationnelles.sh:
 
 #!/bin/bash
 
@@ -245,7 +245,7 @@ fi
 **Écrivez un script qui vérifie l’existence d’un utilisateur dont le nom est donné en paramètre du script. Si le script est appelé sans nom d’utilisateur, il aﬀiche le message : ”Utilisation : *nom_du_script* nom_utilisateur”,où nom_du_script est le nom de votre script récupéré automatiquement (si vous changez le nom de votre script, le message doit changer automatiquement).**
 
 ```bash
-**userCheck.sh:**
+userCheck.sh:
 
 #!/bin/bash
 
@@ -274,7 +274,7 @@ fi
 **Écrivez un programme qui calcule la factorielle d’un entier naturel passé en paramètre (on supposera que l’utilisateur saisit toujours un entier naturel).**
 
 ```bash
-**factorielle.sh:**
+factorielle.sh:
 
 #!/bin/bash
 
@@ -302,7 +302,7 @@ echo "$resultat"
 **Écrivez un script qui génère un nombre aléatoire entre 1 et 1000 et demande à l’utilisateur de le deviner.Le programme écrira ”C’est plus!”, ”C’est moins!” ou ”Gagné!” selon les cas (vous utiliserez $RANDOM).**
 
 ```bash
-**justePrix.sh:**
+justePrix.sh:
 
 #!/bin/bash
 
@@ -341,7 +341,7 @@ echo "Gagné !"
 **2. Généralisez le programme à un nombre quelconque de paramètres (pensez à SHIFT).**
 
 ```bash
-**statistiques.sh:**
+statistiques.sh:
 
 #!/bin/bash
 
@@ -445,7 +445,7 @@ printf 'Moyenne %.3f\n' $moy
 ![colored Bash syntax](https://github.com/cpe-lyon/tp-2-girerd_retureau/blob/master/couleurBashExemple.png)
 
 ```bash
-**jeuCouleur.sh:**
+jeuCouleur.sh:
 
 #!/bin/bash
 
