@@ -166,7 +166,7 @@ fi
 
 &nbsp;
 
-### Exercice 3. Expressions rationnalles
+### Exercice 3. Expressions rationnelles
 
 **Ecrivez un script qui prend un paramètre et utilise la fonction suivante pour vérifier que ce paramètre est un nombre réel :**
 
@@ -240,21 +240,20 @@ fi
 **Écrivez un programme qui calcule la factorielle d’un entier naturel passé en paramètre (on supposera que l’utilisateur saisit toujours un entier naturel).**
 
 ```bash
-userCheck.sh:
+factorielle.sh:
 
 #!/bin/bash
 
-if [ $# = 0 ]
-then
-        echo "Utilisation : $0 nom_utilisateur"
-else
-        if cut -d: -f1 /etc/passwd | grep -q $1 2>/dev/null
-        then
-                echo "L'utilisateur $1 existe dans la base de données."
-        else
-                echo "L'utilisateur $1 n'existe pas dans la base de données."
-        fi
-fi
+n=$1
+resultat=1
+
+while [ $n -ne 0 ]
+do
+	resultat=$(($resultat * $n))
+	n=$(($n - 1))
+done
+
+echo "$resultat"
 
 ```
 
@@ -269,21 +268,29 @@ fi
 **Écrivez un script qui génère un nombre aléatoire entre 1 et 1000 et demande à l’utilisateur de le deviner.Le programme écrira ”C’est plus!”, ”C’est moins!” ou ”Gagné!” selon les cas (vous utiliserez $RANDOM).**
 
 ```bash
-userCheck.sh:
+justePrix.sh:
 
 #!/bin/bash
 
-if [ $# = 0 ]
-then
-        echo "Utilisation : $0 nom_utilisateur"
-else
-        if cut -d: -f1 /etc/passwd | grep -q $1 2>/dev/null
-        then
-                echo "L'utilisateur $1 existe dans la base de données."
-        else
-                echo "L'utilisateur $1 n'existe pas dans la base de données."
-        fi
-fi
+echo "Bienvenue dans notre grand jeu du juste prix ! Devinez le nombre aléatoire (entre 1 et 1000)."
+
+random=$(($RANDOM%100))
+
+read -p 'Saisissez un nombre entre 1 et 1000 : ' userInput
+
+
+while [ $userInput -ne $random ]
+do
+	if [ $userInput -gt $random ]
+	then
+		echo -e "C'est moins !"
+	else
+		echo -e "C'est plus !"
+	fi
+	read -p 'Saissez un nombre entre 1 et 1000 : ' userInput
+done
+
+echo "Gagné !"
 
 ```
 
@@ -299,25 +306,94 @@ fi
 
 **2. Généralisez le programme à un nombre quelconque de paramètres (pensez à SHIFT).**
 
+```bash
+statistiques.sh:
+
+moyenne=0
+min=101
+max=-101
+
+for nombre in $*; do
+	moyenne= $(($moyenne + nombre))
+	if [ nombre -lt min ];
+	then
+		min=$nombre
+	fi
+	if [ nombre -gt max ];
+	then
+		max=$nombre
+	fi
+done
+
+moyenne=$(($moyenne/$#))
+
+echo "La moyenne est de $moyenne, le maximum de $max et le minimum de $min"
+
+```
+
 **3. Modifiez votre programme pour que les notes ne soient plus données en paramètres, mais saisies et stockées au fur et à mesure dans un tableau.**
 
 ```bash
-userCheck.sh:
-
 #!/bin/bash
+function is_number
+{
+re='^[+-]?[0-9]+([.][0-9]+)?$'
 
-if [ $# = 0 ]
+if [[ $1 =~ $re ]]
 then
-        echo "Utilisation : $0 nom_utilisateur"
+	# if [[ $1 < -100 || $1 > 100 ]]; then
+	if [ $1 -gt 100 ] || [ $1 -lt -100 ] ; then
+		return 2
+	else
+		return 1
+	fi
 else
-        if cut -d: -f1 /etc/passwd | grep -q $1 2>/dev/null
-        then
-                echo "L'utilisateur $1 existe dans la base de données."
-        else
-                echo "L'utilisateur $1 n'existe pas dans la base de données."
-        fi
+	return 0
 fi
+}
+echo 'Entrez des entiers entre -100 et 100, à chaque fois, appuyez sur entrer, quand vous avez fini appuyez sur entrer sans rien écrire'
+last=''
+count=0
+params=()
+while true
+do
+	read last
+	if [[ $last == '' ]]
+	then
+		break
+	fi
+	is_number $last
+	ret=$?
+	if [ $ret -eq 0 ]
+	then
+		echo "$last n'est pas un nombre"
+	elif [ $ret -eq 2 ]
+	then
+		echo "$last n'est pas dans la range [-100:100]"
+	else
+		params[$count]=$last
+		count=$(( $count + 1 ))
+	fi
+done
 
+min=${params[0]}
+max=${params[0]}
+total=0
+for i in $(seq 0 $(($count-2)))
+do
+	param=${params[$i]}
+	if [[ $param < $min ]]; then
+		min=$param
+	fi
+	if [[ $max < $param ]]; then
+		max=$param
+	fi
+	total=$(($total + $param))
+done
+echo "Min: $min"
+echo "Max: $max"
+moy=$(echo "$total / $(( $count - 1 ))" | bc -l)
+printf 'Moyenne %.3f\n' $moy
 ```
 
 &nbsp;
@@ -333,21 +409,16 @@ fi
 ![colored Bash syntax](https://github.com/cpe-lyon/tp-2-girerd_retureau/blob/master/couleurBashExemple.png)
 
 ```bash
-userCheck.sh:
-
 #!/bin/bash
 
-if [ $# = 0 ]
-then
-        echo "Utilisation : $0 nom_utilisateur"
-else
-        if cut -d: -f1 /etc/passwd | grep -q $1 2>/dev/null
-        then
-                echo "L'utilisateur $1 existe dans la base de données."
-        else
-                echo "L'utilisateur $1 n'existe pas dans la base de données."
-        fi
-fi
+for fg in 1 4 5 7 30 31 32 33 34 35 36 37
+do
+	for bg in $(seq 40 46)
+	do
+		echo -e -n "\e[${fg};${bg}mBash \e[0m"
+	done
+	echo -e "\e[${fg};47mBash \e[0m"
+done
 
 ```
 
