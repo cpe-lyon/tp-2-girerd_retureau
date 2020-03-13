@@ -442,7 +442,7 @@ printf 'Moyenne %.3f\n' $moy
 
 **Écrivez un script qui aﬀiche les combinaisons possibles de couleurs (cf. TP 1) :**
 
-![colored Bash syntax](https://github.com/cpe-lyon/tp-2-girerd_retureau/blob/master/couleurBashExemple.png)
+![colored Bash syntax](couleurBashExemple.png)
 
 ```bash
 jeuCouleur.sh:
@@ -462,4 +462,4 @@ done
 
 *Résultat :*
 
-![colored Bash syntax](https://github.com/cpe-lyon/tp-2-girerd_retureau/blob/master/couleurBashResultat.png)
+![colored Bash syntax](couleurBashResultat.png)
